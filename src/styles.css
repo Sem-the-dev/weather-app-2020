@@ -126,3 +126,9 @@ footer i {
   padding-right: 28px;
   padding-top: 18px;
 }
+
+.signature {
+  font-family: monospace;
+  text-decoration: none;
+  text-align: center;
+}
