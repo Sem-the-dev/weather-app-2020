@@ -1,0 +1,128 @@
+body {
+  background: linear-gradient(to top, #95bfee 0%, #e7f0fd 100%);
+}
+
+.search {
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  text-align: center;
+  padding: 0px;
+  position: relative;
+}
+.search-button {
+  padding: 0px;
+  position: relative;
+  text-align: left;
+}
+
+input {
+  background-color: #e7f0fd;
+  border-radius: 4px;
+  opacity: 50%;
+  width: 70px;
+}
+
+.btn-group-toggle {
+  position: relative;
+  opacity: 50%;
+  margin-top: 0px;
+  margin-bottom: 22px;
+}
+
+.current-weather {
+  text-align: center;
+  margin: 0 auto;
+  color: #393e46;
+  line-height: 18px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.weather-details p {
+  padding-left: 0;
+  padding: 30px 0;
+  line-height: 45px;
+  margin: 0 0 0 10px;
+  display: inline;
+  font-size: 14px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  display: block;
+  color: #393e46;
+}
+.main-icon {
+  font-size: 140px;
+  text-align: center;
+  padding: 40px 0px 0px;
+  display: block;
+  margin: auto;
+}
+
+.hourly-weather {
+  text-align: right;
+  list-style-type: none;
+  padding: 40px 0px 0px;
+  line-height: 30px;
+  margin-right: 10px;
+  font-family: monospace;
+  font-size: 16px;
+  color: #393e46;
+}
+
+.fa-sun {
+  color: #ebcb64;
+}
+
+.fa-moon {
+  color: #bbbbbb;
+}
+
+.fa-cloud {
+  color: #bebbb5;
+}
+
+.fa-cloud-sun {
+  color: #ceab97;
+}
+
+.fa-cloud-showers-heavy {
+  color: #aaaaaa;
+}
+
+.temperature {
+  text-align: center;
+  margin-top: 100px;
+  font-family: monospace;
+  color: #393e46;
+}
+
+.current-temperature {
+  font-size: 70px;
+  margin-top: -50px;
+  margin-bottom: 0px;
+}
+
+.high-low-temperature {
+  font-size: 20px;
+  margin: 10px 0 30px;
+}
+
+.forecast {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: monospace;
+  position: relative;
+  color: #393e46;
+}
+
+footer i {
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.col {
+  padding-right: 28px;
+  padding-top: 18px;
+}
