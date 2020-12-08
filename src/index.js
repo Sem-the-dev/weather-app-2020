@@ -53,7 +53,10 @@ function getWeather(response) {
   document.querySelector("#low-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
-}
+
+let mainIconElement = document.querySelector("#main-weather-icon");
+mainIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  }
 
 function changeCity(event) {
   event.preventDefault();
