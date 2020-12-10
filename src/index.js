@@ -115,11 +115,11 @@ function ConvertToFahrenheit(event) {
 let fahrenheitLink = document.querySelector("#fahrenheit-bttn");
 fahrenheitLink.addEventListener("click", ConvertToFahrenheit);
 
-function ConvertToCelcius(event) {
+function ConvertToCelsius(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
   nowTemp.innerHTML = `${Math.round(celsiusTemperature)}°`;
 }
 
-let celciusLink = document.querySelector("#celcius-bttn");
-celciusLink.addEventListener("click", ConvertToCelcius);
+let celsiusLink = document.querySelector("#celsius-bttn");
+celsiusLink.addEventListener("click", ConvertToCelsius);
