@@ -1,4 +1,6 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+
   let days = [
     "Sunday",
     "Monday",
@@ -8,29 +10,14 @@ function formatDate(date) {
     "Friday",
     "Saturday"
   ];
-  let day = days[now.getDay()];
-
-  let hours = now.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  let minutes = now.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  return `${day} ${hours}:${minutes}`;
+  let day = days[date.getDay()];
+  return `${day} ${formatHours(timestamp)}`;
 }
 
-let dateElement = document.querySelector("#date");
-let now = new Date();
-
-dateElement.innerHTML = formatDate(now);
 
 
 function getWeather(response) {
-
+  
   
   document.querySelector("#main-current-temperature").innerHTML = `${Math.round(
     response.data.main.temp
@@ -39,31 +26,57 @@ function getWeather(response) {
       "#weatherDescription"
       ).innerHTML = `${response.data.weather[0].main}`;
       document.querySelector("h1").innerHTML = response.data.name;
-  document.querySelector("#windspeed").innerHTML = Math.round(
-    response.data.wind.speed
-    );
-  document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.main.feels_like
-    );
-    document.querySelector("#humidity").innerHTML = Math.round(
-      response.data.main.humidity
-      );
-      document.querySelector("#high-temp").innerHTML = Math.round(
-        response.data.main.temp_max
+      document.querySelector("#windspeed").innerHTML = Math.round(
+        response.data.wind.speed
         );
+        document.querySelector("#feels-like").innerHTML = Math.round(
+          response.data.main.feels_like
+          );
+        document.querySelector("#humidity").innerHTML = Math.round(
+          response.data.main.humidity
+            );
+        document.querySelector("#high-temp").innerHTML = Math.round(
+          response.data.main.temp_max
+              );
         document.querySelector("#low-temp").innerHTML = Math.round(
           response.data.main.temp_min
-          );
-
-          celsiusTemperature = response.data.main.temp;
-  
+                );
+                
+        //document.querySelector("#date").innerHTML = (response.data.dt)
+                console.log(response.data.dt)
+    
+        celsiusTemperature = response.data.main.temp;
+                
   let mainIconElement = document.querySelector("#main-weather-icon");
   mainIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   
 }
 
+function formatHours(timestamp) {
+  let date = new date(timestamp);
+   let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+}
+
 function getForecast(response){
-console.log(response);  
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.list[0]; 
+  console.log(forecast);
+  forecastElement.innerHTML = 
+  `<div class="col border-right border-success">
+  <strong> ${formatHours(forecast.dt * 1000)} </strong> 
+  <br />
+  H:${Math.round(forecast.main.temp_max)}° 
+  L:${Math.round(forecast.main.temp_min)}° 
+  <br />
+  <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png";>
+  </div>`; 
 }
   
   function changeCity(event) {
@@ -80,8 +93,8 @@ console.log(response);
     let apiCityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     axios.get(apiCityUrl).then(getWeather);
     
-    let apitUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Paris&units=metric&appid=${apiKey}`;
-    axios.get(apiUrl).then(getForecast);
+    let forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+    axios.get(forecastUrl).then(getForecast);
 }
 
 
@@ -106,7 +119,7 @@ let celsiusTemperature = null;
 function ConvertToFahrenheit(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
-  //celsiusLink.classList.remove("active");
+  //celsiusLink.classList.add("active");
   let fahrenheitTemp = (celsiusTemperature * 9)/5 +32;
   nowTemp.innerHTML = `${Math.round(fahrenheitTemp)}°`;
 }
@@ -119,6 +132,7 @@ function ConvertToCelsius(event) {
   let nowTemp = document.querySelector("#main-current-temperature");
   nowTemp.innerHTML = `${Math.round(celsiusTemperature)}°`;
 }
+debugger;
 
 let celsiusLink = document.querySelector("#celsius-bttn");
 celsiusLink.addEventListener("click", ConvertToCelsius);
