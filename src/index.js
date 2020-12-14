@@ -28,7 +28,6 @@ let now = new Date();
 
 dateElement.innerHTML = formatDate(now);
 
-//
 
 function getWeather(response) {
 
@@ -61,31 +60,30 @@ function getWeather(response) {
   let mainIconElement = document.querySelector("#main-weather-icon");
   mainIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   
-  getForecast(response);
 }
 
 function getForecast(response){
-  let apiKey = `aea55e6fcec85bd9372335be0d239f49`;
-  let apiForecastUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Paris&units=metric&appid=${apiKey}`;
-  axios.get(apiForecastUrl).then(getForecast);
+console.log(response);  
+}
+  
+  function changeCity(event) {
+    event.preventDefault();
+    let city = document.querySelector("#search-bar").value;
+    search(city);
+  }
+  
+  let enterCity = document.querySelector("#search-engine");
+  enterCity.addEventListener("submit", changeCity);
+  
+  function search(city) {
+    let apiKey = `aea55e6fcec85bd9372335be0d239f49`;
+    let apiCityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    axios.get(apiCityUrl).then(getWeather);
+    
+    let apitUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Paris&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(getForecast);
 }
 
-function changeCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#search-bar").value;
-  search(city);
-}
-
-let enterCity = document.querySelector("#search-engine");
-enterCity.addEventListener("submit", changeCity);
-
-function search(city) {
-  let apiKey = `aea55e6fcec85bd9372335be0d239f49`;
-  let apiCityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-  axios.get(apiCityUrl).then(getWeather);
-}
-
-search("London");
 
 function showPosition(position) {
   let apiKey = `aea55e6fcec85bd9372335be0d239f49`;
@@ -108,6 +106,7 @@ let celsiusTemperature = null;
 function ConvertToFahrenheit(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
+  //celsiusLink.classList.remove("active");
   let fahrenheitTemp = (celsiusTemperature * 9)/5 +32;
   nowTemp.innerHTML = `${Math.round(fahrenheitTemp)}°`;
 }
@@ -123,3 +122,5 @@ function ConvertToCelsius(event) {
 
 let celsiusLink = document.querySelector("#celsius-bttn");
 celsiusLink.addEventListener("click", ConvertToCelsius);
+
+search("London");
