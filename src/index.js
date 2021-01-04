@@ -1,7 +1,12 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   
-  let days = [
+  let hours = date.getHours();
+  if (hours < 10) {hours = `0${hours}`}
+  
+  let minutes = date.getMinutes();
+  if (minutes < 10) {minutes = `0${minutes}`};
+    let days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -10,8 +15,11 @@ function formatDate(timestamp) {
     "Friday",
     "Saturday",
   ];
+  
   let day = days[date.getDay()];
-  return `${day} ${formatHours(timestamp)}`;
+  return `${day} ${hours}:${minutes}`;
+
+  //return `${day} ${formatHours(timestamp)}`;
 }
 
 
@@ -41,8 +49,8 @@ function getWeather(response) {
     response.data.main.temp_min
   );
   
-  //document.querySelector("#date").innerHTML = (response.data.dt)
-  console.log(response.data.dt);
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   celsiusTemperature = response.data.main.temp;
   
   let mainIconElement = document.querySelector("#main-weather-icon");
@@ -52,18 +60,7 @@ function getWeather(response) {
   );
 }
 
-function formatHours(timestamp) {
-  let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
 
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-}
 
 function getForecast(response) {
   let forecastElement = document.querySelector("#forecast");
@@ -72,8 +69,8 @@ function getForecast(response) {
   for (let index = 0; index < 6; index++){
   forecast = response.data.list[index];
   
-  forecastElement.innerHTML += ` <div class="row-1"> <div class="col-2 border-right border-success">
-  <strong> ${formatHours(forecast.dt * 1000)} </strong> 
+  forecastElement.innerHTML += `<div class="row-1"> <div class="col-2 border-right border-success">
+  <strong> ${formatDate(forecast.dt * 1000)} </strong> 
   <br />
   H:${Math.round(forecast.main.temp_max)}° 
   L:${Math.round(forecast.main.temp_min)}° 
