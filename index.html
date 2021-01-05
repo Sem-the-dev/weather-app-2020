@@ -49,9 +49,10 @@
             </h2>
             <p> Last updated: <span id="date"> Monday 17:10</span> </p>
         </div>
-
+        
+       <div class="container">
         <div class="row">
-            <div class="col weather-details">
+            <div class="col-4 weather-details">
                 <p>
                     Feels like: <span id="feels-like">10</span>°
                     <br />
@@ -59,42 +60,44 @@
                     <br />
                     Humidity: <span id="humidity">19</span>
                 </p>
-            </div>
+            </div> 
+            
+            
+        <div class="col-4 temperature">
 
-            <div>
                <img src="" id="main-weather-icon" class="col main-icon" alt="image-of-weather"/>    
-            </div>
-
-            <div class="col hourly-weather">
-                <li>15:00 <i class="far fa-sun"></i> 21°</li>
-                <li>16:00 <i class="far fa-sun"></i> 20°</li>
-                <li>17:00 <i class="fas fa-cloud-sun"></i> 18°</li>
-                <li>18:00 <i class="fas fa-cloud"></i> 18°</li>
-                <li>19:00 <i class="fas fa-cloud"></i> 18°</li>
-                <li>20:00 <i class="fas fa-moon"></i> 17°</li>
-                <li>21:00 <i class="fas fa-moon"></i> 16°</li>
-                <li>22:00 <i class="fas fa-moon"></i> 18°</li>
-            </div>
-        </div>
-
-        <div class="temperature">
-            <p class="current-temperature" id="main-current-temperature">
-                21°
-            </p>
-            <p class="high-low-temperature">
-                H:<span id="high-temp">24</span>° L:<span id="low-temp">16</span>°
+            
+            <span class="current-temperature" id="main-current-temperature">
+                21°</span>
+        <p class="high-low-temperature" >
+                H:<span  id="high-temp">24</span>° L:<span id="low-temp">16</span>°
             </p>
         </div>
 
-        <footer>
-<div class="card-body" id="forecast" >
-    <div class="row-1 forecast">
-    <div class="col-2 border-right border-success">
-      
-    </div>
+ <div class="col-4 weather-details">
+    <p>
+        Sunrise: <span id="">07:00</span>°
+        <br />
+        Sunset: <span id="">16:00</span>
+    </p>
 </div>
-</div>          
 
+        </div>    
+        </div>
+
+        
+
+   
+<div class="container">
+<div class="row">
+<div class="col-3 hourly-weather" id="forecast">
+    
+</div>
+
+</div>
+</div>
+           
+<footer>
             <p class="signature"> <a href="https://github.com/Sem-the-dev/weather-app-2020" target="blank" > Open-source code</a> by: Semhar Tesfu</p>
         </footer>
     </div>

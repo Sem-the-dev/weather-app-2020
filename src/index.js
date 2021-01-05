@@ -19,7 +19,7 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 
-  //return `${day} ${formatHours(timestamp)}`;
+  
 }
 
 
@@ -69,15 +69,19 @@ function getForecast(response) {
   for (let index = 0; index < 6; index++){
   forecast = response.data.list[index];
   
-  forecastElement.innerHTML += `<div class="row-1"> <div class="col-2 border-right border-success">
-  <strong> ${formatDate(forecast.dt * 1000)} </strong> 
-  <br />
-  H:${Math.round(forecast.main.temp_max)}° 
-  L:${Math.round(forecast.main.temp_min)}° 
-  <br />
-  <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
-  </div>
-  </div>`;
+forecastElement.innerHTML += 
+`<div class="row forecast">
+<div class="col-3">
+${formatDate(forecast.dt * 1000)} <br>
+<img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/> 
+<br>
+H:${Math.round(forecast.main.temp_max)}° 
+L:${Math.round(forecast.main.temp_min)}° 
+
+      </div> 
+      </div> 
+`
+
 
 }
 }
