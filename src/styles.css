@@ -64,14 +64,15 @@ input {
 }
 
 .hourly-weather {
-  text-align: right;
+  text-align: center;
   list-style-type: none;
   padding: 40px 0px 0px;
   line-height: 30px;
-  margin-right: 10px;
+  margin: auto;
   font-family: monospace;
-  font-size: 16px;
+  font-size: 14px;
   color: #393e46;
+  display: flex;
 }
 
 .fa-sun {

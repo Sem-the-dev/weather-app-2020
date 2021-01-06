@@ -71,7 +71,7 @@ function getForecast(response) {
   
 forecastElement.innerHTML += 
 `<div class="row forecast">
-<div class="col-3">
+<div class="col">
 ${formatDate(forecast.dt * 1000)} <br>
 <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/> 
 <br>
