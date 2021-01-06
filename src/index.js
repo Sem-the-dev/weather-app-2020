@@ -54,6 +54,12 @@ function getWeather(response) {
   document.querySelector("#low-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
+
+  document.querySelector("#sunrise").innerHTML = 
+  formatHours(response.data.sys.sunrise * 1000);
+ 
+   document.querySelector("#sunset").innerHTML = 
+  formatHours(response.data.sys.sunset * 1000);
   
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
