@@ -5,6 +5,9 @@ body {
   background-size: auto;
 }
 
+.container {
+  max-width: fit-content;
+}
 .search {
   margin-top: 40px;
   margin-left: auto;
@@ -44,16 +47,15 @@ input {
 }
 
 .weather-details p {
-  padding-left: 0;
   padding: 30px 0;
   line-height: 45px;
-  margin: 0 0 0 10px;
-  display: inline;
+  margin: auto;
   font-size: 14px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: block;
   color: #393e46;
+  text-align: center;
 }
 .main-icon {
   font-size: 100px;
@@ -61,38 +63,7 @@ input {
   padding: 0px 0px 0px;
   display: block;
   margin: auto;
-}
-
-.hourly-weather {
-  text-align: center;
-  list-style-type: none;
-  padding: 40px 0px 0px;
-  line-height: 30px;
-  margin: auto;
-  font-family: monospace;
-  font-size: 14px;
-  color: #393e46;
-  display: flex;
-}
-
-.fa-sun {
-  color: #ebcb64;
-}
-
-.fa-moon {
-  color: #bbbbbb;
-}
-
-.fa-cloud {
-  color: #bebbb5;
-}
-
-.fa-cloud-sun {
-  color: #ceab97;
-}
-
-.fa-cloud-showers-heavy {
-  color: #aaaaaa;
+  width: 50%;
 }
 
 .temperature {
@@ -120,14 +91,21 @@ input {
   color: #393e46;
 }
 
+.hourly-weather {
+  text-align: center;
+  list-style-type: none;
+  padding: 40px 0px 0px;
+  line-height: 30px;
+  margin: auto;
+  font-family: monospace;
+  font-size: 14px;
+  color: #393e46;
+  display: flex;
+}
+
 footer i {
   font-size: 40px;
   margin-top: 10px;
-}
-
-.col {
-  padding-right: 28px;
-  padding-top: 18px;
 }
 
 .signature {
