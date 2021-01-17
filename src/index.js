@@ -136,7 +136,8 @@ let celsiusTemperature = null;
 function ConvertToFahrenheit(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
-  //celsiusLink.classList.add("active");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   nowTemp.innerHTML = `${Math.round(fahrenheitTemp)}°`;
 
@@ -168,13 +169,16 @@ function ConvertToCelsius(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
   nowTemp.innerHTML = `${Math.round(celsiusTemperature)}°`;
- 
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+$("#fahrenheit-bttn").button('toggle')
+
   let forecastItemsMax = document.querySelectorAll(".forecast-max");
   forecastItemsMax.forEach(function (item) {
     let currentTemp = item.innerHTML;
     item.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
   });
-  
+
   let forecastItemsMin = document.querySelectorAll(".forecast-min");
   forecastItemsMin.forEach(function (item) {
     let currentTemp = item.innerHTML;
