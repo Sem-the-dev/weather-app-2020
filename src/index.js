@@ -88,12 +88,12 @@ forecastElement.innerHTML +=
 ${formatHours(forecast.dt * 1000)} <br>
 <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/> 
 <br>
-H:${Math.round(forecast.main.temp_max)}° 
-L:${Math.round(forecast.main.temp_min)}° 
+H:<span class="forecast-max">${Math.round(forecast.main.temp_max)}</span>° 
+L:<span class="forecast-min">${Math.round(forecast.main.temp_min)}</span>°  
 
       </div> 
       </div> 
-`
+`;
 }
 }
 
@@ -139,15 +139,50 @@ function ConvertToFahrenheit(event) {
   //celsiusLink.classList.add("active");
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   nowTemp.innerHTML = `${Math.round(fahrenheitTemp)}°`;
+
+
+let forecastItemsMax = document.querySelectorAll(".forecast-max");
+  forecastItemsMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
+  });
+
+  let forecastItemsMin = document.querySelectorAll(".forecast-min");
+  forecastItemsMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
+  
+  fahrenheitLink.removeEventListener("click", ConvertToFahrenheit);
+  celsiusLink.addEventListener("click", ConvertToCelsius);
+
+  });
 }
+
 
 let fahrenheitLink = document.querySelector("#fahrenheit-bttn");
 fahrenheitLink.addEventListener("click", ConvertToFahrenheit);
+
+
 
 function ConvertToCelsius(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
   nowTemp.innerHTML = `${Math.round(celsiusTemperature)}°`;
+ 
+  let forecastItemsMax = document.querySelectorAll(".forecast-max");
+  forecastItemsMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
+  });
+  
+  let forecastItemsMin = document.querySelectorAll(".forecast-min");
+  forecastItemsMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
+  });
+  fahrenheitLink.addEventListener("click", ConvertToFahrenheit);
+  celsiusLink.removeEventListener("click", ConvertToCelsius);
+
 }
 
 
