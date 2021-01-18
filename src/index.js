@@ -42,9 +42,11 @@ function getWeather(response) {
   document.querySelector("#windspeed").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#feels-like").innerHTML = Math.round(
+  document.querySelector("#feels-like").innerHTML = `${Math.round(
     response.data.main.feels_like
-  );
+  )}°`;
+  celsiusFeelsLikeTemp = response.data.main.feels_like;
+
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.main.humidity
   );
@@ -131,16 +133,21 @@ hereButton.addEventListener("click", getPosition);
 
 
 let celsiusTemperature = null;
-
+let celsiusFeelsLikeTemp = null;
 
 function ConvertToFahrenheit(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
+  let feelsLikeTemp = document.querySelector("#feels-like");
+  
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   nowTemp.innerHTML = `${Math.round(fahrenheitTemp)}°`;
 
+  let fahrenheitFeelsLikeTemp = (celsiusFeelsLikeTemp * 9) / 5 + 32;
+  feelsLikeTemp.innerHTML = `${Math.round(fahrenheitFeelsLikeTemp)}°`
+
+celsiusLink.classList.add("active");
+fahrenheitLink.classList.remove("active");
 
 let forecastItemsMax = document.querySelectorAll(".forecast-max");
   forecastItemsMax.forEach(function (item) {
@@ -169,6 +176,10 @@ function ConvertToCelsius(event) {
   event.preventDefault();
   let nowTemp = document.querySelector("#main-current-temperature");
   nowTemp.innerHTML = `${Math.round(celsiusTemperature)}°`;
+  
+  let feelsLikeTemp = document.querySelector("#feels-like");
+  feelsLikeTemp.innerHTML = `${Math.round(celsiusFeelsLikeTemp)}°`
+
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 
