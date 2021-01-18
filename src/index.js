@@ -130,6 +130,11 @@ function getPosition() {
 let hereButton = document.querySelector("#current-location");
 hereButton.addEventListener("click", getPosition);
 
+let fahrenheitLink = document.querySelector("#fahrenheit-bttn");
+fahrenheitLink.addEventListener("click", ConvertToFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-bttn");
+celsiusLink.addEventListener("click", ConvertToCelsius);
 
 
 let celsiusTemperature = null;
@@ -146,8 +151,8 @@ function ConvertToFahrenheit(event) {
   let fahrenheitFeelsLikeTemp = (celsiusFeelsLikeTemp * 9) / 5 + 32;
   feelsLikeTemp.innerHTML = `${Math.round(fahrenheitFeelsLikeTemp)}°`
 
-celsiusLink.classList.add("active");
-fahrenheitLink.classList.remove("active");
+//celsiusLink.classList.add("active");
+//fahrenheitLink.classList.remove("active");
 
 let forecastItemsMax = document.querySelectorAll(".forecast-max");
   forecastItemsMax.forEach(function (item) {
@@ -160,15 +165,11 @@ let forecastItemsMax = document.querySelectorAll(".forecast-max");
     let currentTemp = item.innerHTML;
     item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
   
-  fahrenheitLink.removeEventListener("click", ConvertToFahrenheit);
+  //fahrenheitLink.removeEventListener("click", ConvertToFahrenheit);
   celsiusLink.addEventListener("click", ConvertToCelsius);
 
   });
 }
-
-
-let fahrenheitLink = document.querySelector("#fahrenheit-bttn");
-fahrenheitLink.addEventListener("click", ConvertToFahrenheit);
 
 
 
@@ -180,8 +181,8 @@ function ConvertToCelsius(event) {
   let feelsLikeTemp = document.querySelector("#feels-like");
   feelsLikeTemp.innerHTML = `${Math.round(celsiusFeelsLikeTemp)}°`
 
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
+  //celsiusLink.classList.remove("active");
+  //fahrenheitLink.classList.add("active");
 
   let forecastItemsMax = document.querySelectorAll(".forecast-max");
   forecastItemsMax.forEach(function (item) {
@@ -195,13 +196,11 @@ function ConvertToCelsius(event) {
     item.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
   });
   fahrenheitLink.addEventListener("click", ConvertToFahrenheit);
-  celsiusLink.removeEventListener("click", ConvertToCelsius);
+  //celsiusLink.removeEventListener("click", ConvertToCelsius);
 
 }
 
 
-let celsiusLink = document.querySelector("#celsius-bttn");
-celsiusLink.addEventListener("click", ConvertToCelsius);
-celsiusLink.removeEventListener("click", ConvertToCelsius);
+
 
 search("London");
