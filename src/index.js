@@ -171,7 +171,6 @@ function ConvertToCelsius(event) {
   nowTemp.innerHTML = `${Math.round(celsiusTemperature)}°`;
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-$("#fahrenheit-bttn").button('toggle')
 
   let forecastItemsMax = document.querySelectorAll(".forecast-max");
   forecastItemsMax.forEach(function (item) {
@@ -192,5 +191,6 @@ $("#fahrenheit-bttn").button('toggle')
 
 let celsiusLink = document.querySelector("#celsius-bttn");
 celsiusLink.addEventListener("click", ConvertToCelsius);
+celsiusLink.removeEventListener("click", ConvertToCelsius);
 
 search("London");
