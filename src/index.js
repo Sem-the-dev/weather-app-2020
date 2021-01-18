@@ -151,8 +151,10 @@ function ConvertToFahrenheit(event) {
   let fahrenheitFeelsLikeTemp = (celsiusFeelsLikeTemp * 9) / 5 + 32;
   feelsLikeTemp.innerHTML = `${Math.round(fahrenheitFeelsLikeTemp)}°`
 
-//celsiusLink.classList.add("active");
-//fahrenheitLink.classList.remove("active");
+  //celsiusLink.classList.add("active");
+  //fahrenheitLink.classList.remove("active"); 
+  
+
 
 let forecastItemsMax = document.querySelectorAll(".forecast-max");
   forecastItemsMax.forEach(function (item) {
@@ -165,7 +167,6 @@ let forecastItemsMax = document.querySelectorAll(".forecast-max");
     let currentTemp = item.innerHTML;
     item.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
   
-  //fahrenheitLink.removeEventListener("click", ConvertToFahrenheit);
   celsiusLink.addEventListener("click", ConvertToCelsius);
 
   });
@@ -196,7 +197,7 @@ function ConvertToCelsius(event) {
     item.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
   });
   fahrenheitLink.addEventListener("click", ConvertToFahrenheit);
-  //celsiusLink.removeEventListener("click", ConvertToCelsius);
+  
 
 }
 

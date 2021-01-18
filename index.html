@@ -16,25 +16,27 @@
     <div class="container">
         <form id="search-engine">
             <div class="row search">
-                <div class="col search-button">
-                    <input type="click" class="btn btn-light" value="Here" id="current-location" />
+
+
+                <div class="col-6">
+                    <input type="search" placeholder="Type a city ..." class="form-control" id="search-bar"
+                        autofocus="off" />
                 </div>
 
-                <div class="col">
-                    <input type="search" placeholder="Enter a city" class="form-control" id="search-bar"
-                        autofocus="on" />
+                <div class="col-2 search-button">
+                    <input type="submit" class="btn btn-outline-dark" value="Search" id="search-button" />
                 </div>
 
-                <div class="col search-button">
-                    <input type="submit" class="btn btn-light" value="Search" id="search-button" />
+                <div class="col-2 search-button">
+                    <input type="click" class="btn btn-outline-dark" value="Here" id="current-location" />
                 </div>
 
-                <div class="col btn-group btn-group-toggle" data-toggle="buttons" id="temp-value-buttons">
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="fahrenheit-bttn" autocomplete="on"/> °F
+                <div class="col-2 btn-group btn-group-toggle" data-toggle="buttons" id="temp-value-buttons">
+                    <label class="btn btn-outline-dark">
+                        <input type="radio" name="options" id="fahrenheit-bttn" autocomplete="off"/> °F
                     </label>
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="options" id="celsius-bttn" autocomplete="on" checked/> °C
+                    <label class="btn btn-outline-dark">
+                        <input type="radio" name="options" id="celsius-bttn" autocomplete="off" checked/> °C
                     </label>
                 </div>
             </div>
