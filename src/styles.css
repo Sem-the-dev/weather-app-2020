@@ -1,8 +1,7 @@
 body {
-  background: linear-gradient(to top, #95bfee 0%, #e7f0fd 100%);
   background-image: url(hues-of-red-and-blue.jpg);
-  background-position: center;
-  background-size: auto;
+  background-position: auto;
+  background-size: 2000px;
 }
 
 .container {
