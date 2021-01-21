@@ -75,6 +75,8 @@ function getWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+celsiusLink.removeEventListener("click", convertToCelsius);
 }
 
 
@@ -128,6 +130,9 @@ function showPosition(position) {
   let apiKey = `aea55e6fcec85bd9372335be0d239f49`;
   let apiLocationUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
   axios.get(apiLocationUrl).then(getWeather);
+  
+  let forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
+  axios.get(forecastUrl).then(getForecast);
 }
 
 function getPosition() {
