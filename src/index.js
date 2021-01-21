@@ -117,7 +117,7 @@ function search(city) {
   let apiKey = `aea55e6fcec85bd9372335be0d239f49`;
   let apiCityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiCityUrl).then(getWeather);
-  let forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(forecastUrl).then(getForecast);
 
   fahrenheitLink.addEventListener("click", convertToFahrenheit);
@@ -131,7 +131,7 @@ function showPosition(position) {
   let apiLocationUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
   axios.get(apiLocationUrl).then(getWeather);
   
-  let forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
   axios.get(forecastUrl).then(getForecast);
 }
 
